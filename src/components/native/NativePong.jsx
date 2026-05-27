@@ -331,7 +331,7 @@ export default function NativePong() {
         </div>
 
         <div className="flex flex-col items-end">
-          <span className="font-mono text-[10px] text-rose-400 uppercase tracking-widest font-bold">HASAN_BOT</span>
+          <span className="font-mono text-[10px] text-rose-400 uppercase tracking-widest font-bold">ARCADE_BOT</span>
           <span className="font-mono text-2xl font-black text-white" id="pong-cpu-score">{cpuScore}</span>
         </div>
       </div>
@@ -355,7 +355,7 @@ export default function NativePong() {
               NATIVE PHYSICS PONG
             </span>
             <p className="text-slate-400 text-xs mb-6 max-w-[280px]">
-              Challenge the custom Hasan Arcade bot! Use your Mouse or Arrow/WASD keys to guard and smash the physics ball.
+              Challenge the custom CPU Arcade bot! Use your Mouse or Arrow/WASD keys to guard and smash the physics ball.
             </p>
             <button
               onClick={startGame}
@@ -377,7 +377,7 @@ export default function NativePong() {
                   VICTORY!
                 </span>
                 <span className="text-xs text-slate-400 mb-5 font-mono">
-                  You beat Hasan Bot <strong className="text-emerald-400">{playerScore} to {cpuScore}</strong>!
+                  You beat Arcade CPU <strong className="text-emerald-400">{playerScore} to {cpuScore}</strong>!
                 </span>
                 <span className="text-xs text-amber-400 font-mono bg-amber-950/50 border border-amber-500/30 px-3 py-1 rounded-full mb-5">
                   🏆 CERTIFIED ARCADE PLAYER
@@ -389,7 +389,7 @@ export default function NativePong() {
                   DEFEAT
                 </span>
                 <span className="text-xs text-slate-400 mb-5 font-mono">
-                  Hasan Bot beat you <strong className="text-rose-400">{cpuScore} to {playerScore}</strong>.
+                  Arcade CPU beat you <strong className="text-rose-400">{cpuScore} to {playerScore}</strong>.
                 </span>
                 <span className="text-xs text-slate-500 font-mono mb-5">
                   Try again, watch the angles!

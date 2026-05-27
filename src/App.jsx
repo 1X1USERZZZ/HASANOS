@@ -12,48 +12,176 @@ import { Gamepad2, Info, Shuffle, Sparkles, Trophy, Flame, Play, Clock, HeartCra
 
 
 
+const defaultGames = [
+  {
+    id: "basket-hoop",
+    title: "Basket Hoop",
+    description: "An exciting unblocked arcade basketball hoop game! Aim, shoot, and score high by dunking basketballs into the hoop with physics-driven controls.",
+    iframeUrl: "https://d11jzht7mj96rr.cloudfront.net/games/2024/construct/311/basket-hoop/index-gg.html",
+    category: "Sports",
+    tags: ["Basketball", "Sports", "Arcade", "Physics"],
+    thumbnail: "gradient-orange",
+    instructions: [
+      "Click or tap the screen to aim and throw the basketball.",
+      "Score consecutive baskets to trigger combo fire multipliers!",
+      "Be quick and precise to beat the active timer."
+    ],
+    plays: 1205,
+    rating: 4.8,
+    likes: 185,
+    releaseYear: 2024
+  },
+  {
+    id: "geometry-arrow",
+    title: "Geometry Arrow",
+    description: "Ride, glide, and navigate through a neon obstacle course in this intensive rhythm reaction jumping game. Time your moves perfectly!",
+    iframeUrl: "https://cdn.vietdp.com/file/vietdp-games/games/t52025/geometry-arrow-2/index.html",
+    category: "Action",
+    tags: ["Geometry Dash", "Rhythm", "Hard", "Reaction"],
+    thumbnail: "gradient-pink",
+    instructions: [
+      "Click, tap, or press Spacebar to bounce or shift directions upwards.",
+      "Release to drop down or balance your path.",
+      "Dodge hazardous wall triangles and floating spikes.",
+      "Keep steady focus to clear successive speed checkpoints!"
+    ],
+    plays: 1540,
+    rating: 4.9,
+    likes: 215,
+    releaseYear: 2025
+  },
+  {
+    id: "melon-playground",
+    title: "Melon Playground",
+    description: "Unleash your creativity and experiment with characters, weapons, and physics in this fun sandbox simulator playground!",
+    iframeUrl: "https://cdn.vietdp.com/file/vietdp-games/games/t52025/melon-playground/index.html",
+    category: "Sandbox",
+    tags: ["Sandbox", "Physics", "Simulator", "Fun"],
+    thumbnail: "gradient-emerald",
+    instructions: [
+      "Use your Mouse/Touch to select and interact with characters or items.",
+      "Spawn custom items and drag them on the active field.",
+      "Observe cool physics-driven reactions inside the digital arena!"
+    ],
+    plays: 2310,
+    rating: 4.7,
+    likes: 310,
+    releaseYear: 2025
+  },
+  {
+    id: "geometry-dash",
+    title: "Geometry Dash",
+    description: "Navigate high-speed, rhythm-based hazard courses and time your leaps perfectly with intense soundtracks in Geometry Dash!",
+    iframeUrl: "https://unblocked-games.s3.amazonaws.com/games/2023/q2/geometry-dash-freezenova/index.html",
+    category: "Action",
+    tags: ["Rhythm", "Platformer", "Hard", "Skill", "Dash"],
+    thumbnail: "gradient-cyan",
+    instructions: [
+      "Click or tap the screen to complete jump movements.",
+      "Hold to perform consecutive leaps.",
+      "Prepare for almost impossible paths filled with spikes and portal shifts!",
+      "Hone your reaction times with high energy music guides."
+    ],
+    plays: 4320,
+    rating: 4.9,
+    likes: 395,
+    releaseYear: 2023
+  },
+  {
+    id: "gunspin",
+    title: "Gunspin",
+    description: "Shoot your way to victory by spinning your firearm in mid-air through weapon thrust mechanics! Spend coins to upgrade and unlock powerful weapons.",
+    iframeUrl: "https://htmlxm.github.io/h/gunspin/",
+    category: "Action",
+    tags: ["Shooting", "Physics", "Upgrades", "Spin", "Skill"],
+    thumbnail: "gradient-yellow",
+    instructions: [
+      "Click or tap anywhere on the screen to fire your gun.",
+      "Each shot triggers a powerful backwards recoil thrust vectoring.",
+      "Time your shots as the gun spins to push it further to the right!",
+      "Collect coin milestones and chests to purchase upgraded firearms."
+    ],
+    plays: 3890,
+    rating: 4.8,
+    likes: 312,
+    releaseYear: 2023
+  },
+  {
+    id: "crazy-roll-3d",
+    title: "Crazy Roll 3D",
+    description: "Speed through dynamic slopes and narrow tracks in this high speed 3D tumbling physics ball race! Dodge obstacles, collect neon gems, and don't fall off.",
+    iframeUrl: "https://vaxtangi1980.github.io/crazy/",
+    category: "Action",
+    tags: ["Speed", "3D", "Physics", "Avoid", "Slope"],
+    thumbnail: "gradient-indigo",
+    instructions: [
+      "Use Arrow/WASD keys or drag mouse to steer your rolling ball.",
+      "Dodge moving and stationary red obstacles and blocks.",
+      "Collect neon gems to save progress and unlock cool ball skins.",
+      "Speed up on booster tracks and time your ramp jumps beautifully!"
+    ],
+    plays: 5120,
+    rating: 4.9,
+    likes: 421,
+    releaseYear: 2023
+  },
+  {
+    id: "time-shooter-3-swat",
+    title: "Time Shooter 3: SWAT",
+    description: "Time moves only when you move in this tactical SWAT shooter simulation! Plan your breaches, dodge enemy fire in super slow motion, and rescue hostaged agents.",
+    iframeUrl: "https://classroomjq.github.io/class2623/time-shooter-3-swat/",
+    category: "Action",
+    tags: ["Shooter", "Tactical", "3D", "Slow-Motion", "SWAT"],
+    thumbnail: "gradient-blue",
+    instructions: [
+      "Use WASD keys or Arrow keys to move around.",
+      "Move your Mouse to aim and click Left-Click to shoot.",
+      "Time is almost frozen when you stand perfectly still—use this to map your trajectory!",
+      "Pick up dropped weapons with F and throw items/weapons with Right-Click."
+    ],
+    plays: 6410,
+    rating: 4.9,
+    likes: 512,
+    releaseYear: 2023
+  }
+];
+
 export default function App() {
   // Auto-clear old local cached games lists so they never reappear
   useEffect(() => {
     localStorage.removeItem('hasanos_arcade_games_custom');
+    localStorage.removeItem('hasanos_arcade_games_custom_v1');
     localStorage.removeItem('hasanos_arcade_games_custom_v2');
+    localStorage.removeItem('hasanos_arcade_games_user_v5');
+    localStorage.removeItem('hasanos_arcade_games_user_v6');
+    localStorage.removeItem('hasanos_arcade_games_user_v7');
+    localStorage.removeItem('hasanos_arcade_games_user_v8');
+    localStorage.removeItem('hasanos_arcade_games_user_v9');
+    localStorage.removeItem('hasanos_arcade_games_user_v10');
+    localStorage.removeItem('hasanos_arcade_games_user_v11');
+    localStorage.removeItem('hasanos_arcade_games_user_v12');
   }, []);
 
-  // Customized game cabinets state using a fresh pristine key V5
+  // Customized game cabinets state using a fresh pristine key V13
   const [typedGames, setTypedGames] = useState(() => {
-    const saved = localStorage.getItem('hasanos_arcade_games_user_v5');
+    const saved = localStorage.getItem('hasanos_arcade_games_user_v13');
     if (saved) {
       try {
         const parsed = JSON.parse(saved);
         if (Array.isArray(parsed) && parsed.length > 0) return parsed;
       } catch (e) {}
     }
-    // Only the user's specific requested basket hoop game sits here by default
-    return [
-      {
-        id: "basket-hoop",
-        title: "Basket Hoop",
-        description: "An exciting unblocked arcade basketball hoop game! Aim, shoot, and score high by dunking basketballs into the hoop with physics-driven controls.",
-        iframeUrl: "https://d11jzht7mj96rr.cloudfront.net/games/2024/construct/311/basket-hoop/index-gg.html",
-        category: "Sports",
-        tags: ["Basketball", "Sports", "Arcade", "Physics"],
-        thumbnail: "gradient-orange",
-        instructions: [
-          "Click or tap the screen to aim and throw the basketball.",
-          "Score consecutive baskets to trigger combo fire multipliers!",
-          "Be quick and precise to beat the retro timer."
-        ],
-        plays: 1205,
-        rating: 4.8,
-        likes: 185,
-        releaseYear: 2024
-      }
-    ];
+    // Only the user's specific requested basket hoop, geometry arrow, melon playground, geometry-dash, gunspin, crazy-roll-3d, and time-shooter-3-swat games sit here by default
+    return defaultGames;
   });
 
   useEffect(() => {
-    localStorage.setItem('hasanos_arcade_games_user_v5', JSON.stringify(typedGames));
+    localStorage.setItem('hasanos_arcade_games_user_v13', JSON.stringify(typedGames));
   }, [typedGames]);
+
+  const handleRestoreDefaults = () => {
+    setTypedGames(defaultGames);
+  };
 
 
 
@@ -202,32 +330,25 @@ export default function App() {
             <div className="absolute top-0 right-0 h-44 w-44 rounded-full bg-indigo-500/5 blur-[80px]"></div>
             <div className="absolute bottom-0 left-0 h-44 w-44 rounded-full bg-violet-500/5 blur-[80px]"></div>
 
-            <div className="flex-1 flex flex-col gap-3 text-center md:text-left">
-              <span className="font-mono text-xs font-black text-indigo-400 uppercase tracking-[0.25em] flex items-center justify-center md:justify-start gap-1.5">
-                <Sparkles className="w-4 h-4 text-amber-400" />
+            {/* Left Action Box */}
+            <div className="flex-1 flex flex-col gap-3 items-center md:items-start text-center md:text-left">
+              <span className="font-mono text-xs font-black text-indigo-400 uppercase tracking-[0.2em] flex items-center gap-1.5 justify-center md:justify-start">
+                <Sparkles className="w-4 h-4 text-amber-400 animate-bounce" />
                 DODGE STUDY HALL BOREDOM
               </span>
-              <h2 className="font-sans text-2xl md:text-4xl font-black text-white leading-tight">
-                PRO LEVEL CLASSIC <br className="hidden md:inline" />
-                <span className="bg-gradient-to-r from-indigo-400 via-violet-400 to-rose-400 bg-clip-text text-transparent">
-                  UNBLOCKED ARCADE
-                </span>
-              </h2>
-              <p className="text-slate-400 text-xs md:text-sm font-sans max-w-md leading-relaxed">
-                Loaded directly from pristine standalone sandboxed servers. Zero lag, zero trackers, 100% free gameplay.
+              <p className="text-slate-400 text-xs md:text-sm font-sans max-w-md leading-relaxed mb-1">
+                Tap to instantly play handpicked unblocked sandbox simulator, arcade sports, and rhythm course titles on HASANOS!
               </p>
             </div>
 
-            {/* Quick Play Trigger widget */}
-            <div className="flex flex-col gap-2.5 items-center shrink-0 w-full md:w-auto" id="hero-launcher-box">
-              <button
-                onClick={() => handlePlayGame(typedGames[0])}
-                className="cursor-pointer w-full md:w-auto flex items-center justify-center gap-2 px-8 py-3.5 bg-indigo-600 hover:bg-indigo-500 text-white font-mono text-xs font-black rounded-full shadow-lg shadow-indigo-600/30 hover:shadow-indigo-500/40 active:scale-95 transition-all outline-none"
-                id="hero-boredom-btn"
-              >
-                <Play className="w-4 h-4 text-white fill-white" />
-                PLAY NOW
-              </button>
+            {/* Right Header Area: GAMES HASANOSGAMES UNBLOCKED (GAMES in white) */}
+            <div className="flex flex-col text-center md:text-right items-center md:items-end justify-center select-none" id="main-desktop-banner">
+              <h2 className="font-sans text-5xl md:text-7xl font-black tracking-tighter text-white leading-none">
+                GAMES
+              </h2>
+              <span className="font-sans text-[10px] md:text-xs font-black uppercase tracking-[0.25em] text-[#818cf8] mt-2.5 leading-none">
+                HASANOSGAMES UNBLOCKED
+              </span>
             </div>
           </div>
         ) : null}
@@ -296,14 +417,14 @@ export default function App() {
                   </div>
                   <h3 className="font-sans text-xl font-black text-slate-200 mb-1.5 uppercase">Arcade Storage Cleared</h3>
                   <p className="text-slate-400 text-xs font-sans max-w-sm leading-relaxed mb-6">
-                    You've successfully unmounted all default games. It's time to install your very own HTML5, emulator, or iframe cabinet links!
+                    You've successfully cleared all active cabinets. Reset to the pristine unblocked versions anytime!
                   </p>
                   <div className="flex flex-col sm:flex-row gap-3">
                     <button
-                      onClick={() => setShowAddModal(true)}
+                      onClick={handleRestoreDefaults}
                       className="cursor-pointer px-6 py-3 bg-indigo-600 hover:bg-indigo-500 text-white rounded-xl text-xs font-mono font-black shadow-lg shadow-indigo-600/30 transition-all active:scale-95"
                     >
-                      + Install Custom Cabinet
+                      Restore Default Cabinets
                     </button>
                   </div>
                 </>

@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import { Flame, Search, Sparkles, TrendingUp, Gamepad2, Heart } from 'lucide-react';
+import { Flame, Search, Sparkles, TrendingUp, Gamepad2, Heart, Box } from 'lucide-react';
 
 export default function NavBar({
   searchQuery,
@@ -14,7 +14,7 @@ export default function NavBar({
   selectedCategory,
   setSelectedCategory,
 }) {
-  const categories = ['All', 'Action', 'Arcade', 'Puzzle', 'Retro', 'Sports'];
+  const categories = ['All', 'Action', 'Arcade', 'Puzzle', 'Sandbox', 'Sports'];
 
   return (
     <header className="sticky top-0 z-50 w-full glass px-4 py-4 md:px-8" id="hasanos-header">
@@ -35,20 +35,6 @@ export default function NavBar({
               </h1>
             </div>
           </div>
-
-          {/* Favorites filter pill (Mobile Only inline toggle) */}
-          <button
-            onClick={() => setShowOnlyFavorites(!showOnlyFavorites)}
-            className={`md:hidden flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs font-mono font-black border transition-all ${
-              showOnlyFavorites
-                ? 'bg-rose-950/40 border-rose-500 text-rose-400 shadow-[0_0_10px_rgba(244,63,94,0.15)]'
-                : 'bg-white/5 border-white/10 text-slate-400'
-            }`}
-            id="fav-mobile-btn"
-          >
-            <Heart className={`w-3.5 h-3.5 ${showOnlyFavorites ? 'fill-rose-500 text-rose-500' : 'text-slate-400'}`} />
-            <span>FAVS ({favoritesCount})</span>
-          </button>
         </div>
 
         {/* Search Bar section */}
@@ -66,11 +52,11 @@ export default function NavBar({
           />
         </div>
 
-        {/* Action Toggles for Desktop */}
-        <div className="hidden md:flex items-center gap-3" id="header-actions">
+        {/* Action Toggles */}
+        <div className="flex items-center justify-between md:justify-end gap-3" id="header-actions">
           <button
-            onClick={() => setShowOnlyFavorites(true)}
-            className={`cursor-pointer flex items-center gap-2 px-4 py-2 font-mono text-xs font-bold uppercase tracking-wider rounded-xl border transition-all ${
+            onClick={() => setShowOnlyFavorites(!showOnlyFavorites)}
+            className={`cursor-pointer flex items-center gap-2 px-3.5 py-2 font-mono text-xs font-bold uppercase tracking-wider rounded-xl border transition-all ${
               showOnlyFavorites
                 ? 'bg-rose-950/40 border-rose-500 text-rose-400 shadow-[0_0_12px_rgba(244,63,94,0.2)]'
                 : 'bg-white/5 border-white/10 text-slate-400 hover:text-white'
@@ -100,7 +86,7 @@ export default function NavBar({
           >
             {cat === 'All' && <Sparkles className="w-3 h-3 inline mr-1.5 text-amber-500" />}
             {cat === 'Action' && <Flame className="w-3 h-3 inline mr-1.5 text-orange-400" />}
-            {cat === 'Retro' && <TrendingUp className="w-3 h-3 inline mr-1.5 text-violet-400" />}
+            {cat === 'Sandbox' && <Box className="w-3 h-3 inline mr-1.5 text-pink-400" />}
             {cat}
           </button>
         ))}
