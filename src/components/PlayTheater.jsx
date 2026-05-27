@@ -17,7 +17,8 @@ import {
   Sparkles,
   Smile,
   ShieldCheck,
-  RotateCcw
+  RotateCcw,
+  Trash2
 } from 'lucide-react';
 import NativeSnake from './native/NativeSnake';
 import NativePong from './native/NativePong';
@@ -27,6 +28,7 @@ export default function PlayTheater({
   isFavorite,
   onClose,
   onToggleFavorite,
+  onDeleteGame,
 }) {
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [userRating, setUserRating] = useState(() => {
