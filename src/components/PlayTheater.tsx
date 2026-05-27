@@ -154,7 +154,7 @@ export default function PlayTheater({
 
   return (
     <div
-      className={`fixed inset-0 z-50 flex flex-col bg-slate-950 text-slate-100 transition-all ${
+      className={`fixed inset-0 z-50 flex flex-col mesh-bg text-slate-100 transition-all ${
         isFullscreen ? 'p-0 w-full h-full' : 'p-4 md:p-8 overflow-y-auto'
       }`}
       id="play-theater-root"
@@ -163,11 +163,11 @@ export default function PlayTheater({
       <div className={`mx-auto w-full max-w-7xl flex flex-col ${isFullscreen ? 'h-full max-w-none' : 'gap-6'}`}>
         
         {/* UPPER PANEL: CONTROL HUD */}
-         <div className={`flex items-center justify-between border-b border-slate-800 bg-slate-900/40 p-4 ${
-           isFullscreen ? 'px-6 shadow' : 'rounded-2xl border'
+         <div className={`flex items-center justify-between glass p-4 ${
+           isFullscreen ? 'border-b border-white/10 px-6 shadow' : 'rounded-2xl'
          }`} id="theater-hud">
            <div className="flex items-center gap-3">
-             <span className="font-mono text-xs font-black px-2 py-1 bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 rounded-lg select-none">
+             <span className="font-mono text-xs font-black px-2 py-1 bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 rounded-lg select-none">
                ARCADE ACTIVE
              </span>
              <h2 className="font-sans text-lg font-black tracking-tight" id="theater-game-title">
@@ -182,7 +182,7 @@ export default function PlayTheater({
                className={`p-2 cursor-pointer rounded-lg border transition-all ${
                  isFavorite
                    ? 'bg-rose-950/40 border-rose-500 text-rose-400 shadow-[0_0_10px_rgba(244,63,94,0.15)]'
-                   : 'bg-slate-800 border-slate-700 text-slate-400 hover:text-white'
+                   : 'bg-white/5 border-white/10 text-slate-400 hover:text-white hover:bg-white/10'
                }`}
                title="Favorite this game"
              >
@@ -191,7 +191,7 @@ export default function PlayTheater({
 
              <button
                onClick={() => setIsFullscreen(!isFullscreen)}
-               className="p-2 cursor-pointer bg-slate-800 hover:bg-slate-700 text-slate-400 hover:text-white rounded-lg border border-slate-700 transition-all"
+               className="p-2 cursor-pointer bg-white/5 hover:bg-white/10 text-slate-400 hover:text-white rounded-lg border border-white/10 transition-all"
                title={isFullscreen ? 'Exit Theater Mode' : 'Theater Mode'}
              >
                {isFullscreen ? <Minimize2 className="w-4 h-4" /> : <Maximize2 className="w-4 h-4" />}
@@ -199,7 +199,7 @@ export default function PlayTheater({
 
              <button
                onClick={onClose}
-               className="p-2 cursor-pointer bg-slate-800 hover:bg-red-950 hover:border-red-500 hover:text-red-400 text-slate-400 rounded-lg border border-slate-700 transition-all"
+               className="p-2 cursor-pointer bg-white/5 hover:bg-red-950/40 hover:border-red-500 hover:text-red-400 text-slate-400 rounded-lg border border-white/10 transition-all"
                title="Quit Game"
              >
                <X className="w-4 h-4" />
@@ -210,7 +210,7 @@ export default function PlayTheater({
          {/* MAIN INTERACTIVE SEGMENT */}
          <div className={`grid ${isFullscreen ? 'flex-1 h-0 grid-cols-1 md:grid-cols-4' : 'grid-cols-1 lg:grid-cols-3 gap-6'}`} id="theater-interactive-grid">
            {/* GAME SCREEN BOX */}
-           <div className={`relative ${isFullscreen ? 'md:col-span-3 h-full' : 'lg:col-span-2 aspect-video min-h-[340px] md:min-h-[460px]'} border-4 border-slate-800 bg-slate-900 rounded-2xl overflow-hidden shadow-2xl flex items-center justify-center`} id="game-stage-wrapper">
+           <div className={`relative ${isFullscreen ? 'md:col-span-3 h-full' : 'lg:col-span-2 aspect-video min-h-[340px] md:min-h-[460px]'} border border-white/10 bg-slate-950 rounded-2xl overflow-hidden shadow-2xl flex items-center justify-center`} id="game-stage-wrapper">
              {game.isNative ? (
                <div className="w-full h-full flex items-center justify-center p-4 bg-slate-950 overflow-y-auto">
                  {game.id === 'native-snake' ? <NativeSnake /> : <NativePong />}
@@ -229,17 +229,17 @@ export default function PlayTheater({
            </div>
 
            {/* PLAY SIDEBAR PANEL (Reviews Board / Game controller instructions) */}
-           <div className={`flex flex-col bg-slate-900/30 border border-slate-800/80 rounded-2xl overflow-hidden ${
+           <div className={`flex flex-col glass rounded-2xl overflow-hidden ${
              isFullscreen ? 'md:col-span-1 h-full' : 'lg:col-span-1'
            }`} id="theater-sidebar">
              {/* Info & Rating Tab */}
-             <div className="p-4 border-b border-slate-800 bg-slate-900/60 flex items-center justify-between">
+             <div className="p-4 border-b border-white/5 bg-white/5 flex items-center justify-between">
                <div className="flex gap-2">
                  <button
                    onClick={() => handleRating('like')}
                    className={`flex items-center gap-1 px-3 py-1.5 cursor-pointer rounded-lg font-mono text-xs font-bold border transition-all ${
                      userRating === 'like'
-                       ? 'bg-emerald-500/10 border-emerald-500 text-emerald-400'
+                       ? 'bg-indigo-600/20 border-indigo-500 text-indigo-300'
                        : 'bg-slate-800/80 border-slate-700/80 text-slate-400 hover:text-white'
                    }`}
                  >
@@ -250,7 +250,7 @@ export default function PlayTheater({
                    onClick={() => handleRating('dislike')}
                    className={`flex items-center gap-1 px-3 py-1.5 cursor-pointer rounded-lg font-mono text-xs font-bold border transition-all ${
                      userRating === 'dislike'
-                       ? 'bg-red-500/10 border-red-500 text-red-400'
+                       ? 'bg-rose-950/20 border-rose-500/30 text-rose-300'
                        : 'bg-slate-800/80 border-slate-700/80 text-slate-400 hover:text-white'
                    }`}
                    title="Dislike"
@@ -259,7 +259,7 @@ export default function PlayTheater({
                  </button>
                </div>
                
-               <div className="flex items-center gap-1 text-amber-400 text-sm font-mono font-bold bg-slate-950/60 border border-slate-800 px-2.5 py-1 rounded-lg">
+               <div className="flex items-center gap-1 text-amber-400 text-sm font-mono font-bold bg-white/5 border border-white/10 px-2.5 py-1 rounded-lg">
                  <Star className="w-4 h-4 fill-amber-400 text-amber-400" />
                  <span>{game.rating}</span>
                </div>
@@ -268,8 +268,8 @@ export default function PlayTheater({
              {/* Dynamic Scrolling Board content */}
              <div className="flex-1 overflow-y-auto p-4 flex flex-col gap-5 min-h-[220px]" id="sidebar-scrolling-content">
                {/* Controls / Instructions section */}
-               <div className="bg-slate-950/60 border border-slate-800/60 p-3.5 rounded-xl">
-                 <span className="font-mono text-[10px] text-emerald-400 font-black tracking-wider uppercase flex items-center gap-1.5 mb-2.5">
+               <div className="bg-white/5 border border-white/15 p-3.5 rounded-xl">
+                 <span className="font-mono text-[10px] text-indigo-400 font-black tracking-wider uppercase flex items-center gap-1.5 mb-2.5">
                    <Wrench className="w-3.5 h-3.5" />
                    How to play & Controls
                  </span>
@@ -282,7 +282,7 @@ export default function PlayTheater({
 
                {/* Reviews Section Title */}
                <div className="border-t border-slate-850 pt-3">
-                 <span className="font-mono text-[10px] text-cyan-400 font-black tracking-wider uppercase flex items-center gap-1.5 mb-3">
+                 <span className="font-mono text-[10px] text-indigo-400 font-black tracking-wider uppercase flex items-center gap-1.5 mb-3">
                    <Sparkles className="w-3.5 h-3.5" />
                    Gamer Board Reviews
                  </span>
@@ -293,7 +293,7 @@ export default function PlayTheater({
                      <p className="text-slate-500 text-xs italic py-4 text-center">No scores reported yet. Be the first!</p>
                    ) : (
                      reviews.map((rev, idx) => (
-                       <div key={idx} className="p-2.5 rounded-lg bg-slate-900 border border-slate-800/80 flex flex-col gap-1.5">
+                       <div key={idx} className="p-2.5 rounded-lg bg-white/5 border border-white/5 flex flex-col gap-1.5">
                          <div className="flex items-center justify-between">
                            <div className="flex items-center gap-1.5">
                              <span className="text-sm select-none">{rev.avatar}</span>
@@ -313,7 +313,7 @@ export default function PlayTheater({
                          </div>
                          <p className="text-[11px] text-slate-300 font-sans leading-relaxed">{rev.comment}</p>
                          {rev.scoreReport && (
-                           <div className="text-[9px] font-mono text-emerald-400 font-bold bg-emerald-950/40 border border-emerald-500/20 px-2 py-0.5 rounded w-max">
+                           <div className="text-[9px] font-mono text-indigo-400 font-bold bg-indigo-950/40 border border-indigo-500/20 px-2 py-0.5 rounded w-max">
                              🏆 {rev.scoreReport}
                            </div>
                          )}
@@ -325,7 +325,7 @@ export default function PlayTheater({
              </div>
 
              {/* Add Score & Review footer box */}
-             <form onSubmit={handleAddReview} className="p-3 bg-slate-900/80 border-t border-slate-800 flex flex-col gap-2" id="comment-textbox">
+             <form onSubmit={handleAddReview} className="p-3 bg-white/5 border-t border-white/10 flex flex-col gap-2" id="comment-textbox">
                <div className="grid grid-cols-2 gap-1.5">
                  <input
                    type="text"
@@ -376,11 +376,11 @@ export default function PlayTheater({
                    onChange={(e) => setNewComment(e.target.value)}
                    placeholder="Share review message or tips..."
                    maxLength={150}
-                   className="w-full text-xs font-sans pl-2.5 pr-8 py-2 bg-slate-950 border border-slate-800 focus:border-emerald-500/80 text-slate-200 placeholder-slate-600 rounded-lg outline-none"
+                   className="w-full text-xs font-sans pl-3 pr-9 py-2 bg-black/40 border border-white/10 focus:border-indigo-500/50 text-slate-200 placeholder-slate-500 rounded-lg outline-none"
                  />
                  <button
                    type="submit"
-                   className="absolute top-1 right-1 p-1 bg-emerald-600 hover:bg-emerald-500 text-white rounded cursor-pointer transition-all duration-150 active:scale-90"
+                   className="absolute top-1 right-[5px] p-1 bg-indigo-600 hover:bg-indigo-500 text-white rounded cursor-pointer transition-all duration-150 active:scale-90"
                  >
                    <Send className="w-3.5 h-3.5" />
                  </button>
@@ -391,7 +391,7 @@ export default function PlayTheater({
 
          {/* LOWER SUMMARY DESCRIPTION BANNER */}
          {!isFullscreen && (
-           <div className="bg-slate-900/30 border border-slate-800/80 p-5 rounded-2xl flex flex-col md:flex-row items-start md:items-center justify-between gap-4 py-4" id="theater-desc-footer">
+           <div className="glass p-5 rounded-2xl flex flex-col md:flex-row items-start md:items-center justify-between gap-4 py-4" id="theater-desc-footer">
              <div className="flex-1">
                <span className="font-mono text-[9px] text-slate-500 uppercase tracking-widest font-black block mb-1">ARCADE RECORD METRIC</span>
                <p className="text-xs text-slate-300 font-sans leading-relaxed">
@@ -399,7 +399,7 @@ export default function PlayTheater({
                </p>
              </div>
              
-             <div className="flex items-center gap-4 shrink-0 font-mono text-xs text-slate-400 border-l border-slate-800/80 md:pl-6 px-1 py-1">
+             <div className="flex items-center gap-4 shrink-0 font-mono text-xs text-slate-400 md:border-l border-white/10 md:pl-6 px-1 py-1">
                <div className="flex flex-col">
                  <span>Plays Archive</span>
                  <strong className="text-white text-sm">{(game.plays + 23).toLocaleString()}</strong>
@@ -408,8 +408,8 @@ export default function PlayTheater({
                  <span>Initial Release</span>
                  <strong className="text-white text-sm">{game.releaseYear}</strong>
                </div>
-               <div className="flex items-center gap-1 bg-slate-900 border border-slate-800 px-3 py-2 rounded-xl text-emerald-400 text-[10px] font-bold">
-                 <ShieldCheck className="w-4 h-4 text-emerald-500" />
+               <div className="flex items-center gap-1.5 bg-white/5 border border-white/15 px-3 py-2 rounded-xl text-indigo-400 text-[10px] font-bold">
+                 <ShieldCheck className="w-4 h-4 text-indigo-400" />
                  <span>UNBLOCKED SECURE</span>
                </div>
              </div>

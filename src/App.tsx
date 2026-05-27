@@ -119,7 +119,7 @@ export default function App() {
   }, [userPrefs.recentlyPlayed]);
 
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-100 flex flex-col font-sans" id="hasanos-app-root">
+    <div className="min-h-screen mesh-bg text-slate-100 flex flex-col font-sans" id="hasanos-app-root">
       {/* Dynamic Header navbar control panel */}
       <NavBar
         searchQuery={searchQuery}
@@ -137,21 +137,21 @@ export default function App() {
         {/* HERO BANNER SECTION (Displays list title banner) */}
         {!selectedCategory || selectedCategory === 'All' && !searchQuery && !showOnlyFavorites ? (
           <div
-            className="relative w-full rounded-3xl overflow-hidden bg-slate-900 border border-slate-800/80 p-6 md:p-8 flex flex-col md:flex-row items-center justify-between gap-6 shadow-2xl"
+            className="relative w-full rounded-3xl overflow-hidden glass p-6 md:p-8 flex flex-col md:flex-row items-center justify-between gap-6 shadow-2xl"
             id="hasanos-hero-marquee"
           >
             {/* Ambient visual aura circles */}
-            <div className="absolute top-0 right-0 h-44 w-44 rounded-full bg-emerald-500/5 blur-[80px]"></div>
-            <div className="absolute bottom-0 left-0 h-44 w-44 rounded-full bg-cyan-500/5 blur-[80px]"></div>
+            <div className="absolute top-0 right-0 h-44 w-44 rounded-full bg-indigo-500/5 blur-[80px]"></div>
+            <div className="absolute bottom-0 left-0 h-44 w-44 rounded-full bg-violet-500/5 blur-[80px]"></div>
 
             <div className="flex-1 flex flex-col gap-3 text-center md:text-left">
-              <span className="font-mono text-xs font-black text-emerald-400 uppercase tracking-[0.25em] flex items-center justify-center md:justify-start gap-1.5">
+              <span className="font-mono text-xs font-black text-indigo-400 uppercase tracking-[0.25em] flex items-center justify-center md:justify-start gap-1.5">
                 <Sparkles className="w-4 h-4 text-amber-400" />
                 DODGE STUDY HALL BOREDOM
               </span>
               <h2 className="font-sans text-2xl md:text-4xl font-black text-white leading-tight">
                 PRO LEVEL CLASSIC <br className="hidden md:inline" />
-                <span className="bg-gradient-to-r from-emerald-400 via-teal-400 to-cyan-400 bg-clip-text text-transparent">
+                <span className="bg-gradient-to-r from-indigo-400 via-violet-400 to-rose-400 bg-clip-text text-transparent">
                   UNBLOCKED ARCADE
                 </span>
               </h2>
@@ -164,10 +164,10 @@ export default function App() {
             <div className="flex flex-col gap-2.5 items-center shrink-0 w-full md:w-auto" id="hero-launcher-box">
               <button
                 onClick={handlePickRandomGame}
-                className="cursor-pointer w-full md:w-auto flex items-center justify-center gap-2 px-6 py-3.5 bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 text-slate-950 font-mono text-sm font-black rounded-2xl shadow-[0_0_20px_rgba(16,185,129,0.3)] hover:shadow-[0_0_25px_rgba(16,185,129,0.5)] active:scale-95 transition-all outline-none"
+                className="cursor-pointer w-full md:w-auto flex items-center justify-center gap-2 px-8 py-3.5 bg-indigo-600 hover:bg-indigo-500 text-white font-mono text-sm font-black rounded-full shadow-lg shadow-indigo-600/30 hover:shadow-indigo-500/40 active:scale-95 transition-all outline-none"
                 id="hero-boredom-btn"
               >
-                <Shuffle className="w-4.5 h-4.5 text-slate-950 stroke-[3]" />
+                <Shuffle className="w-4.5 h-4.5 text-white stroke-[3]" />
                 RANDOM ARCADE LAUNCH
               </button>
               
@@ -184,12 +184,12 @@ export default function App() {
           <section className="flex flex-col gap-3" id="recently-played-section">
             <div className="flex items-center justify-between">
               <span className="font-mono text-xs font-black text-slate-400 uppercase tracking-widest flex items-center gap-1.5 font-black">
-                <Clock className="w-4 h-4 text-emerald-400" />
+                <Clock className="w-4 h-4 text-indigo-400" />
                 Recently Played Archives
               </span>
               <button
                 onClick={handleClearRecentlyPlayed}
-                className="cursor-pointer text-[10px] font-mono font-bold text-slate-500 hover:text-rose-400 px-2 py-1 rounded bg-slate-900 border border-slate-800 transition-colors"
+                className="cursor-pointer text-[10px] font-mono font-bold text-slate-400 hover:text-rose-400 px-2.5 py-1 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors"
                 id="clear-recents-btn"
               >
                 Clear History
@@ -201,13 +201,13 @@ export default function App() {
                 <div
                   key={game.id}
                   onClick={() => handlePlayGame(game)}
-                  className="cursor-pointer px-3.5 py-3 rounded-xl bg-slate-900/40 border border-slate-800/80 hover:border-emerald-500/30 text-left flex items-center gap-3 hover:bg-slate-900/80 transition-all group"
+                  className="cursor-pointer px-3.5 py-3 rounded-xl glass-card text-left flex items-center gap-3 hover:scale-[1.02] transition-all group"
                 >
-                  <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-emerald-500/10 text-emerald-400 group-hover:scale-105 transition-transform">
-                    <Play className="w-3.5 h-3.5 fill-emerald-400 text-emerald-400" />
+                  <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-indigo-500/10 text-indigo-400 group-hover:scale-105 transition-transform">
+                    <Play className="w-3.5 h-3.5 fill-indigo-400 text-indigo-400" />
                   </div>
                   <div className="flex-1 overflow-hidden">
-                    <h4 className="font-sans text-xs font-bold text-slate-200 group-hover:text-emerald-400 transition-colors truncate">
+                    <h4 className="font-sans text-xs font-bold text-slate-200 group-hover:text-indigo-400 transition-colors truncate">
                       {game.title}
                     </h4>
                     <span className="font-mono text-[9px] text-slate-500 block uppercase">{game.category}</span>
@@ -223,7 +223,7 @@ export default function App() {
           {/* Section Breadcrumb label */}
           <div className="flex items-center justify-between" id="arcade-count-bubble">
             <h3 className="font-mono text-xs font-black text-slate-400 uppercase tracking-widest flex items-center gap-1.5">
-              <Gamepad2 className="w-4 h-4 text-cyan-400" />
+              <Gamepad2 className="w-4 h-4 text-indigo-400" />
               {showOnlyFavorites ? 'Favorited Cabinets' : `${selectedCategory} Cabinets`} ({filteredGames.length})
             </h3>
             
@@ -250,7 +250,7 @@ export default function App() {
                       setShowOnlyFavorites(false);
                       setSelectedCategory('All');
                     }}
-                    className="cursor-pointer px-4.5 py-2.5 bg-slate-900 border border-slate-800 text-slate-200 hover:text-white rounded-xl text-xs font-mono font-bold hover:border-slate-700 transition-colors"
+                    className="cursor-pointer px-4.5 py-2.5 bg-white/5 border border-white/10 text-slate-200 hover:text-white rounded-xl text-xs font-mono font-bold hover:bg-white/10 transition-colors"
                   >
                     Explore Game Directory
                   </button>
@@ -269,7 +269,7 @@ export default function App() {
                       setSearchQuery('');
                       setSelectedCategory('All');
                     }}
-                    className="cursor-pointer px-4.5 py-2.5 bg-slate-900 border border-slate-800 text-slate-200 hover:text-white rounded-xl text-xs font-mono font-bold hover:border-slate-700 transition-colors"
+                    className="cursor-pointer px-4.5 py-2.5 bg-white/5 border border-white/10 text-slate-200 hover:text-white rounded-xl text-xs font-mono font-bold hover:bg-white/10 transition-colors"
                   >
                     Reset Grid filters
                   </button>
@@ -294,15 +294,15 @@ export default function App() {
 
         {/* INTUITION MANUAL CORNER (Adding games info instructions) */}
         {!searchQuery ? (
-          <section className="mt-8 border-t border-slate-900 pt-8" id="education-section">
-            <div className="p-5 rounded-2xl bg-slate-900/30 border border-slate-900 flex flex-col md:flex-row items-start gap-4">
-              <div className="p-2.5 bg-emerald-500/10 rounded-xl text-emerald-400 border border-emerald-500/20">
-                <Info className="w-5 h-5 text-emerald-400" />
+          <section className="mt-8 border-t border-white/5 pt-8" id="education-section">
+            <div className="p-5 rounded-2xl glass flex flex-col md:flex-row items-start gap-4">
+              <div className="p-2.5 bg-indigo-500/10 rounded-xl text-indigo-400 border border-indigo-500/15">
+                <Info className="w-5 h-5 text-indigo-400" />
               </div>
               <div className="flex-1">
                 <h4 className="font-sans text-sm font-black text-slate-100 mb-1 flex items-center gap-1.5">
                   HASANOS ARCHIVE ARCHITECTURE
-                  <span className="bg-emerald-950/40 text-emerald-400 text-[9px] font-mono border border-emerald-500/25 px-1.5 py-0.5 rounded uppercase font-black tracking-widest">
+                  <span className="bg-indigo-950/40 text-indigo-300 text-[9px] font-mono border border-indigo-500/25 px-1.5 py-0.5 rounded uppercase font-black tracking-widest">
                     SYSTEM INFO
                   </span>
                 </h4>
@@ -329,15 +329,15 @@ export default function App() {
       </main>
 
       {/* FOOTER BAR BANNER */}
-      <footer className="w-full border-t border-slate-900/60 bg-slate-950 py-8 px-4 text-center mt-12 text-xs font-mono text-slate-600" id="hasanos-footer">
+      <footer className="w-full border-t border-white/10 glass py-8 px-4 text-center mt-12 text-xs font-mono text-slate-500" id="hasanos-footer">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-1.5">
-            <Gamepad2 className="w-4 h-4 text-slate-600" />
+            <Gamepad2 className="w-4 h-4 text-slate-500" />
             <span>HASANOS UNBLOCKED GAMES © 2026. All rights secured.</span>
           </div>
           <div className="flex items-center gap-3 text-[10px] text-slate-500">
             <span>Server Ingress Route : Port 3000</span>
-            <div className="w-1 h-3 bg-slate-800"></div>
+            <div className="w-1 h-3 bg-white/15"></div>
             <span>Type : Client SPA Arcades</span>
           </div>
         </div>

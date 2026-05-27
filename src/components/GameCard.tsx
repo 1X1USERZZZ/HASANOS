@@ -55,11 +55,11 @@ export default function GameCard({
   return (
     <div
       onClick={() => onPlay(game)}
-      className="group relative cursor-pointer flex flex-col rounded-2xl bg-slate-900/60 border border-slate-800/80 hover:border-slate-700/80 hover:bg-slate-900/90 transition-all duration-300 overflow-hidden shadow-lg hover:-translate-y-1.5"
+      className="group relative cursor-pointer flex flex-col rounded-2xl glass-card transition-all duration-300 overflow-hidden shadow-lg hover:-translate-y-1.5 hover:shadow-2xl"
       id={`game-card-${game.id}`}
     >
       {/* Thumbnail Banner */}
-      <div className="relative w-full aspect-video overflow-hidden border-b border-slate-800/80">
+      <div className="relative w-full aspect-video overflow-hidden border-b border-white/5">
         {/* Animated Background Vector Pattern */}
         <div className={`absolute inset-0 bg-gradient-to-br ${getGradientStyle(game.thumbnail)} flex items-center justify-center`}>
           <div className="absolute inset-0 opacity-10 bg-[linear-gradient(rgba(18,24,38,0.15)_1.5px,transparent_1.5px),linear-gradient(90deg,rgba(18,24,38,0.15)_1.5px,transparent_1.5px)] bg-[size:16px_16px]"></div>
@@ -69,34 +69,34 @@ export default function GameCard({
             {getGameInitials(game.title)}
           </span>
 
-          <span className="absolute bottom-2 right-2 px-2 py-0.5 rounded bg-slate-950/80 font-mono text-[9px] text-slate-300 border border-slate-800 uppercase tracking-widest font-black">
+          <span className="absolute bottom-2 right-2 px-2 py-0.5 rounded bg-black/60 backdrop-blur-sm font-mono text-[9px] text-slate-300 border border-white/10 uppercase tracking-widest font-black">
             {game.category}
           </span>
 
           {game.isNative && (
-            <span className="absolute top-2 left-2 px-1.5 py-0.5 rounded bg-emerald-500 text-slate-950 font-mono text-[9px] font-black uppercase tracking-widest animate-pulse border border-emerald-400">
+            <span className="absolute top-2 left-2 px-1.5 py-0.5 rounded bg-indigo-600 text-white font-mono text-[9px] font-black uppercase tracking-widest animate-pulse border border-indigo-400">
               ⚡ LIVE NATIVE
             </span>
           )}
         </div>
 
         {/* Hover overlay with play button trigger */}
-        <div className="absolute inset-0 bg-slate-950/50 opacity-0 group-hover:opacity-100 backdrop-blur-[2px] transition-all duration-300 flex items-center justify-center">
-          <div className="flex h-12 w-12 items-center justify-center rounded-full bg-emerald-500 text-slate-950 group-hover:scale-110 active:scale-95 transition-all duration-200 shadow-[0_0_20px_rgba(16,185,129,0.5)]">
-            <Play className="h-6 w-6 ml-1 fill-current text-slate-950" />
+        <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 backdrop-blur-[3px] transition-all duration-300 flex items-center justify-center">
+          <div className="flex h-12 w-12 items-center justify-center rounded-full bg-indigo-600 text-white group-hover:scale-110 active:scale-95 transition-all duration-200 shadow-lg shadow-indigo-500/50 border border-indigo-400/50">
+            <Play className="h-5 w-5 ml-0.5 fill-current text-white" />
           </div>
         </div>
 
         {/* Floating Favorite Action click */}
         <button
           onClick={(e) => onToggleFavorite(e, game.id)}
-          className="absolute top-2.5 right-2.5 p-2 rounded-full cursor-pointer bg-slate-950/60 hover:bg-slate-950 text-slate-300 hover:text-white border border-slate-800/50 backdrop-blur-sm transition-all active:scale-90"
+          className="absolute top-2.5 right-2.5 p-2 rounded-full cursor-pointer bg-black/60 hover:bg-black/80 text-slate-200 hover:text-white border border-white/10 backdrop-blur-sm transition-all active:scale-90"
           id={`fav-btn-${game.id}`}
           title={isFavorite ? 'Remove from favorites' : 'Add to favorites'}
         >
           <Heart
             className={`h-4.5 w-4.5 transition-colors ${
-              isFavorite ? 'fill-rose-500 text-rose-500 animate-pulse' : 'text-slate-300'
+              isFavorite ? 'fill-rose-500 text-rose-500' : 'text-slate-300'
             }`}
           />
         </button>
@@ -106,10 +106,10 @@ export default function GameCard({
       <div className="flex-1 flex flex-col p-4">
         {/* Title & Metadata */}
         <div className="flex items-start justify-between gap-1 mb-1.5">
-          <h3 className="font-sans text-base font-bold text-slate-50 group-hover:text-emerald-400 transition-colors line-clamp-1">
+          <h3 className="font-sans text-base font-bold text-slate-50 group-hover:text-indigo-400 transition-colors line-clamp-1">
             {game.title}
           </h3>
-          <span className="shrink-0 font-mono text-[10px] text-slate-500 bg-slate-950/50 border border-slate-800 px-1.5 py-0.5 rounded font-black">
+          <span className="shrink-0 font-mono text-[10px] text-slate-400 bg-white/5 border border-white/10 px-2 py-0.5 rounded-full font-bold">
             {game.releaseYear}
           </span>
         </div>
@@ -120,7 +120,7 @@ export default function GameCard({
         </p>
 
         {/* Stats Row */}
-        <div className="flex items-center justify-between border-t border-slate-800/60 pt-3 mt-auto">
+        <div className="flex items-center justify-between border-t border-white/5 pt-3 mt-auto">
           {/* Rating */}
           <div className="flex items-center gap-1">
             <Star className="w-3.5 h-3.5 text-amber-500 fill-amber-500" />

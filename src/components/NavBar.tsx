@@ -27,7 +27,7 @@ export default function NavBar({
   const categories = ['All', 'Action', 'Arcade', 'Puzzle', 'Retro', 'Sports'];
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-slate-800 bg-slate-950/95 backdrop-blur-md px-4 py-4 md:px-8" id="hasanos-header">
+    <header className="sticky top-0 z-50 w-full glass px-4 py-4 md:px-8" id="hasanos-header">
       <div className="max-w-7xl mx-auto flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
         {/* Brand Logo & Name */}
         <div className="flex items-center justify-between" id="header-brand-section">
@@ -35,13 +35,13 @@ export default function NavBar({
             setSelectedCategory('All');
             setShowOnlyFavorites(false);
           }}>
-            <div className="relative flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-tr from-emerald-500 to-cyan-500 shadow-[0_0_15px_rgba(16,185,129,0.3)]" id="header-logo">
-              <Gamepad2 className="h-6 w-6 text-slate-950" />
+            <div className="relative flex h-9 w-9 items-center justify-center rounded-lg bg-indigo-600 shadow-lg shadow-indigo-500/20" id="header-logo">
+              <Gamepad2 className="h-5 w-5 text-white" />
             </div>
             <div className="flex flex-col">
-              <span className="font-mono text-xs font-bold uppercase tracking-[0.25em] text-emerald-400">ARCADE CORE</span>
-              <h1 className="font-sans text-xl font-black text-white tracking-tight flex items-center gap-1.5" id="header-title">
-                HASANOS <span className="bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent">UNBLOCKED</span>
+              <span className="font-mono text-[9px] font-bold uppercase tracking-[0.25em] text-indigo-400">ARCADE HUB</span>
+              <h1 className="font-sans text-lg font-black text-white tracking-tight uppercase italic flex items-center gap-0.5" id="header-title">
+                HASANOS<span className="text-indigo-400">GAMES</span>
               </h1>
             </div>
           </div>
@@ -52,7 +52,7 @@ export default function NavBar({
             className={`md:hidden flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs font-mono font-black border transition-all ${
               showOnlyFavorites
                 ? 'bg-rose-950/40 border-rose-500 text-rose-400 shadow-[0_0_10px_rgba(244,63,94,0.15)]'
-                : 'bg-slate-900 border-slate-800 text-slate-400'
+                : 'bg-white/5 border-white/10 text-slate-400'
             }`}
             id="fav-mobile-btn"
           >
@@ -63,15 +63,15 @@ export default function NavBar({
 
         {/* Search Bar section */}
         <div className="relative flex-1 max-w-md mx-auto md:mx-4" id="header-search-wrapper">
-          <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
-            <Search className="h-4 w-4 text-slate-500" />
+          <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3.5">
+            <Search className="h-4 w-4 text-slate-400" />
           </div>
           <input
             type="text"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            placeholder="Search from unblocked arcade archives..."
-            className="w-full text-sm font-sans pl-10 pr-4 py-2 bg-slate-900/60 border border-slate-800 hover:border-slate-700/80 focus:border-emerald-500/80 text-slate-100 placeholder-slate-500 rounded-xl outline-none transition-all duration-200"
+            placeholder="Search unblocked game cabinets..."
+            className="w-full text-sm font-sans pl-10 pr-4 py-2 bg-white/5 border border-white/10 focus:border-indigo-500/50 rounded-full text-slate-100 placeholder-slate-400 outline-none transition-all duration-200"
             id="game-search-input"
           />
         </div>
@@ -82,7 +82,7 @@ export default function NavBar({
             onClick={() => setShowOnlyFavorites(false)}
             className={`cursor-pointer px-4 py-2 font-mono text-xs font-bold uppercase tracking-wider rounded-xl border transition-all ${
               !showOnlyFavorites
-                ? 'bg-gradient-to-tr from-slate-900 to-slate-800 border-slate-700 text-emerald-400'
+                ? 'bg-indigo-600/20 border-indigo-500/30 text-indigo-300'
                 : 'bg-transparent border-transparent text-slate-400 hover:text-white'
             }`}
           >
@@ -93,7 +93,7 @@ export default function NavBar({
             className={`cursor-pointer flex items-center gap-2 px-4 py-2 font-mono text-xs font-bold uppercase tracking-wider rounded-xl border transition-all ${
               showOnlyFavorites
                 ? 'bg-rose-950/40 border-rose-500 text-rose-400 shadow-[0_0_12px_rgba(244,63,94,0.2)]'
-                : 'bg-slate-900/40 border-slate-800 text-slate-400 hover:text-white'
+                : 'bg-white/5 border-white/10 text-slate-400 hover:text-white'
             }`}
           >
             <Heart className={`w-3.5 h-3.5 ${showOnlyFavorites ? 'fill-rose-500 text-rose-500' : 'text-slate-400'}`} />
@@ -103,7 +103,7 @@ export default function NavBar({
       </div>
 
       {/* Row of Category Buttons */}
-      <div className="max-w-7xl mx-auto mt-4 pt-4 border-t border-slate-900 overflow-x-auto scrollbar-none flex gap-2" id="header-categories-row">
+      <div className="max-w-7xl mx-auto mt-4 pt-4 border-t border-white/5 overflow-x-auto scrollbar-none flex gap-2" id="header-categories-row">
         {categories.map((cat) => (
           <button
             key={cat}
@@ -111,10 +111,10 @@ export default function NavBar({
               setSelectedCategory(cat);
               if (showOnlyFavorites) setShowOnlyFavorites(false); // Switch off to show chosen category
             }}
-            className={`cursor-pointer shrink-0 px-3.5 py-1.5 rounded-full text-xs font-mono font-bold transition-all border ${
+            className={`cursor-pointer shrink-0 px-4 py-1.5 rounded-xl text-xs font-mono font-bold transition-all border ${
               selectedCategory === cat && !showOnlyFavorites
-                ? 'bg-emerald-500/10 border-emerald-500 text-emerald-400 shadow-[0_0_12px_rgba(16,185,129,0.15)]'
-                : 'bg-slate-900/60 border-slate-800/80 text-slate-400 hover:text-slate-200'
+                ? 'bg-indigo-600/20 border-indigo-500/30 text-indigo-300 shadow-[0_0_12px_rgba(99,102,241,0.15)]'
+                : 'bg-white/5 border-white/10 text-slate-400 hover:bg-white/10 hover:text-slate-200'
             }`}
             id={`category-${cat.toLowerCase()}`}
           >
