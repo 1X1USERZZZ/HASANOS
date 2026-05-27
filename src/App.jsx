@@ -3,24 +3,23 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import { useState, useEffect, useMemo, MouseEvent } from 'react';
-import { Game, UserPreferences } from './types';
+import { useState, useEffect, useMemo } from 'react';
 import NavBar from './components/NavBar';
 import GameCard from './components/GameCard';
 import PlayTheater from './components/PlayTheater';
 import gamesData from './games.json';
 import { Gamepad2, Info, Shuffle, Sparkles, Trophy, Flame, Play, Clock, HeartCrack } from 'lucide-react';
 
-const typedGames: Game[] = gamesData as Game[];
+const typedGames = gamesData;
 
 export default function App() {
-  const [activeGame, setActiveGame] = useState<Game | null>(null);
+  const [activeGame, setActiveGame] = useState(null);
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('All');
   const [showOnlyFavorites, setShowOnlyFavorites] = useState(false);
 
   // Load User Preferences from localStorage
-  const [userPrefs, setUserPrefs] = useState<UserPreferences>(() => {
+  const [userPrefs, setUserPrefs] = useState(() => {
     const saved = localStorage.getItem('hasanos_arcade_preferences');
     if (saved) {
       try {
@@ -42,7 +41,7 @@ export default function App() {
   }, [userPrefs]);
 
   // Handle Game Play selection triggers
-  const handlePlayGame = (game: Game) => {
+  const handlePlayGame = (game) => {
     setActiveGame(game);
     
     // Add to recently played list (avoid duplicates and keep top 5)
@@ -56,7 +55,7 @@ export default function App() {
   };
 
   // Toggle favorite state
-  const handleToggleFavorite = (gameId: string) => {
+  const handleToggleFavorite = (gameId) => {
     setUserPrefs((prev) => {
       const isFav = prev.favorites.includes(gameId);
       const nextFavorites = isFav
@@ -70,7 +69,7 @@ export default function App() {
   };
 
   // Safe wrapper for card clicks (keeps event propagation quiet)
-  const handleCardToggleFavorite = (e: any, gameId: string) => {
+  const handleCardToggleFavorite = (e, gameId) => {
     e.stopPropagation();
     handleToggleFavorite(gameId);
   };
@@ -83,7 +82,7 @@ export default function App() {
   };
 
   // Safe clear recents log
-  const handleClearRecentlyPlayed = (e: any) => {
+  const handleClearRecentlyPlayed = (e) => {
     e.stopPropagation();
     setUserPrefs((prev) => ({
       ...prev,
@@ -115,7 +114,7 @@ export default function App() {
   const recentGamesList = useMemo(() => {
     return userPrefs.recentlyPlayed
       .map((id) => typedGames.find((g) => g.id === id))
-      .filter((g): g is Game => g !== undefined);
+      .filter((g) => g !== undefined);
   }, [userPrefs.recentlyPlayed]);
 
   return (

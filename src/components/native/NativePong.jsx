@@ -3,13 +3,13 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import { useState, useEffect, useRef, MouseEvent } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Play, RotateCcw, Volume2, VolumeX, ArrowUp, ArrowDown } from 'lucide-react';
 
-const playBeep = (freq: number, type: OscillatorType, duration: number, isMuted: boolean) => {
+const playBeep = (freq, type, duration, isMuted) => {
   if (isMuted) return;
   try {
-    const AudioCtx = window.AudioContext || (window as any).webkitAudioContext;
+    const AudioCtx = window.AudioContext || window.webkitAudioContext;
     if (!AudioCtx) return;
     const ctx = new AudioCtx();
     const osc = ctx.createOscillator();
@@ -30,32 +30,23 @@ const playBeep = (freq: number, type: OscillatorType, duration: number, isMuted:
   }
 };
 
-interface Particle {
-  x: number;
-  y: number;
-  vx: number;
-  vy: number;
-  color: string;
-  alpha: number;
-}
-
 export default function NativePong() {
   const [playerScore, setPlayerScore] = useState(0);
   const [cpuScore, setCpuScore] = useState(0);
   const [isGameOver, setIsGameOver] = useState(false);
   const [isStarted, setIsStarted] = useState(false);
-  const [winner, setWinner] = useState<'player' | 'cpu' | null>(null);
+  const [winner, setWinner] = useState(null);
   const [isMuted, setIsMuted] = useState(false);
 
-  const canvasRef = useRef<HTMLCanvasElement | null>(null);
+  const canvasRef = useRef(null);
 
   // Core physics references (so they update without trigger React loop re-renders)
   const ballPos = useRef({ x: 180, y: 180 });
   const ballVel = useRef({ x: 3, y: 1.5 });
   const pPaddleY = useRef(150); // Player Paddle Y
   const cPaddleY = useRef(150); // CPU Paddle Y
-  const keysPressed = useRef<{ [key: string]: boolean }>({});
-  const particles = useRef<Particle[]>([]);
+  const keysPressed = useRef({});
+  const particles = useRef([]);
 
   // Dimension details
   const pHeight = 60;
@@ -65,10 +56,10 @@ export default function NativePong() {
 
   // Initialize controls
   useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
+    const handleKeyDown = (e) => {
       keysPressed.current[e.key] = true;
     };
-    const handleKeyUp = (e: KeyboardEvent) => {
+    const handleKeyUp = (e) => {
       keysPressed.current[e.key] = false;
     };
 
@@ -82,7 +73,7 @@ export default function NativePong() {
   }, []);
 
   // Track cursor movement on Canvas
-  const handleMouseMove = (e: MouseEvent<HTMLCanvasElement>) => {
+  const handleMouseMove = (e) => {
     const canvas = canvasRef.current;
     if (!canvas) return;
     const rect = canvas.getBoundingClientRect();
@@ -97,7 +88,7 @@ export default function NativePong() {
   };
 
   // Run sparks effect
-  const spawnParticles = (x: number, y: number, color: string) => {
+  const spawnParticles = (x, y, color) => {
     for (let i = 0; i < 10; i++) {
       particles.current.push({
         x,
@@ -110,7 +101,7 @@ export default function NativePong() {
     }
   };
 
-  const resetBall = (direction: 'toPlayer' | 'toCpu') => {
+  const resetBall = (direction) => {
     const canvas = canvasRef.current;
     if (!canvas) return;
     ballPos.current = { x: canvas.width / 2, y: canvas.height / 2 };
@@ -124,7 +115,7 @@ export default function NativePong() {
 
   // Primary animation game loop
   useEffect(() => {
-    let animationId: number;
+    let animationId;
 
     const gameLoop = () => {
       const canvas = canvasRef.current;

@@ -9,10 +9,10 @@ import { Play, RotateCcw, Volume2, VolumeX, ArrowUp, ArrowDown, ArrowLeft, Arrow
 const GRID_SIZE = 20;
 
 // Safe web audio play
-const playBeep = (freq: number, type: OscillatorType, duration: number, isMuted: boolean) => {
+const playBeep = (freq, type, duration, isMuted) => {
   if (isMuted) return;
   try {
-    const AudioCtx = window.AudioContext || (window as any).webkitAudioContext;
+    const AudioCtx = window.AudioContext || window.webkitAudioContext;
     if (!AudioCtx) return;
     const ctx = new AudioCtx();
     const osc = ctx.createOscillator();
@@ -34,13 +34,13 @@ const playBeep = (freq: number, type: OscillatorType, duration: number, isMuted:
 };
 
 export default function NativeSnake() {
-  const [snake, setSnake] = useState<{ x: number; y: number }[]>([
+  const [snake, setSnake] = useState([
     { x: 10, y: 10 },
     { x: 10, y: 11 },
     { x: 10, y: 12 },
   ]);
-  const [food, setFood] = useState<{ x: number; y: number; isGolden: boolean }>({ x: 5, y: 5, isGolden: false });
-  const [direction, setDirection] = useState<'UP' | 'DOWN' | 'LEFT' | 'RIGHT'>('UP');
+  const [food, setFood] = useState({ x: 5, y: 5, isGolden: false });
+  const [direction, setDirection] = useState('UP');
   const [isGameOver, setIsGameOver] = useState(false);
   const [isStarted, setIsStarted] = useState(false);
   const [score, setScore] = useState(0);
@@ -50,13 +50,13 @@ export default function NativeSnake() {
   const [isMuted, setIsMuted] = useState(false);
   const [speed, setSpeed] = useState(130);
 
-  const canvasRef = useRef<HTMLCanvasElement | null>(null);
+  const canvasRef = useRef(null);
   const directionRef = useRef(direction);
   directionRef.current = direction;
 
   // Key handlers
   useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
+    const handleKeyDown = (e) => {
       if (!isStarted || isGameOver) return;
       const key = e.key;
       if ((key === 'ArrowUp' || key === 'w' || key === 'W') && directionRef.current !== 'DOWN') {
@@ -75,7 +75,7 @@ export default function NativeSnake() {
   }, [isStarted, isGameOver]);
 
   // Generate new food location
-  const spawnFood = (currentSnake: { x: number; y: number }[]) => {
+  const spawnFood = (currentSnake) => {
     let newFood;
     let isOnSnake = true;
     while (isOnSnake) {
@@ -84,10 +84,9 @@ export default function NativeSnake() {
         y: Math.floor(Math.random() * GRID_SIZE),
         isGolden: Math.random() < 0.1, // 10% chance of golden apple
       };
-      // eslint-disable-next-line @typescript-eslint/no-loop-func
-      isOnSnake = currentSnake.some(segment => segment.x === newFood!.x && segment.y === newFood!.y);
+      isOnSnake = currentSnake.some(segment => segment.x === newFood.x && segment.y === newFood.y);
     }
-    setFood(newFood!);
+    setFood(newFood);
   };
 
   // Game loop interval

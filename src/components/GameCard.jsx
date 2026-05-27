@@ -3,26 +3,16 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import { Game } from '../types';
 import { Heart, Play, Star, Eye } from 'lucide-react';
-import { MouseEvent } from 'react';
-
-interface GameCardProps {
-  key?: string | number | null;
-  game: Game;
-  isFavorite: boolean;
-  onPlay: (game: Game) => void;
-  onToggleFavorite: (e: any, gameId: string) => void;
-}
 
 export default function GameCard({
   game,
   isFavorite,
   onPlay,
   onToggleFavorite,
-}: GameCardProps) {
+}) {
   // Translate gradient ID into Tailwind gradient backgrounds
-  const getGradientStyle = (thumb: string) => {
+  const getGradientStyle = (thumb) => {
     switch (thumb) {
       case 'gradient-yellow':
         return 'from-amber-400 via-orange-500 to-red-600 shadow-[0_0_20px_rgba(249,115,22,0.15)]';
@@ -48,7 +38,7 @@ export default function GameCard({
   };
 
   // Get letter display icons for cards as backup
-  const getGameInitials = (title: string) => {
+  const getGameInitials = (title) => {
     return title.split(' ').map(nm => nm[0]).join('').slice(0, 3).toUpperCase();
   };
 

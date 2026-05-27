@@ -3,8 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import { useState, useEffect, FormEvent } from 'react';
-import { Game } from '../types';
+import { useState, useEffect } from 'react';
 import {
   Heart,
   Maximize2,
@@ -23,41 +22,25 @@ import {
 import NativeSnake from './native/NativeSnake';
 import NativePong from './native/NativePong';
 
-interface PlayTheaterProps {
-  game: Game;
-  isFavorite: boolean;
-  onClose: () => void;
-  onToggleFavorite: (gameId: string) => void;
-}
-
-interface Review {
-  username: string;
-  avatar: string;
-  stars: number;
-  comment: string;
-  timestamp: string;
-  scoreReport?: string;
-}
-
 export default function PlayTheater({
   game,
   isFavorite,
   onClose,
   onToggleFavorite,
-}: PlayTheaterProps) {
+}) {
   const [isFullscreen, setIsFullscreen] = useState(false);
-  const [userRating, setUserRating] = useState<'like' | 'dislike' | null>(() => {
-    return (localStorage.getItem(`hasanos_rating_${game.id}`) as 'like' | 'dislike' | null) || null;
+  const [userRating, setUserRating] = useState(() => {
+    return localStorage.getItem(`hasanos_rating_${game.id}`) || null;
   });
   const [likesCount, setLikesCount] = useState(game.likes);
-  const [reviews, setReviews] = useState<Review[]>([]);
+  const [reviews, setReviews] = useState([]);
   const [newComment, setNewComment] = useState('');
   const [newUsername, setNewUsername] = useState('');
   const [newStars, setNewStars] = useState(5);
   const [newScore, setNewScore] = useState('');
 
   // Initial mock comments for realistic arcade environment feel
-  const initialComments: Record<string, Review[]> = {
+  const initialComments = {
     pacman: [
       { username: "HasanCore_99", avatar: "🤖", stars: 5, comment: "I scored 142k! This is completely unblocked at school. Thanks Hasan!", timestamp: "2 mins ago", scoreReport: "Score: 142,390" },
       { username: "NoobMaster", avatar: "👾", stars: 4, comment: "Blinky speed is insane in later stages. Classic!", timestamp: "1 hour ago" },
@@ -110,7 +93,7 @@ export default function PlayTheater({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [game.id]);
 
-  const handleRating = (rating: 'like' | 'dislike') => {
+  const handleRating = (rating) => {
     if (userRating === rating) {
       // Clear rating
       setUserRating(null);
@@ -128,11 +111,11 @@ export default function PlayTheater({
     }
   };
 
-  const handleAddReview = (e: FormEvent) => {
+  const handleAddReview = (e) => {
     e.preventDefault();
     if (!newComment.trim()) return;
 
-    const fresh: Review = {
+    const fresh = {
       username: newUsername.trim() || 'Anonymous Gamer',
       avatar: ['🎮', '👾', '🤖', '👑', '⭐', '🐍', '🚀', '🔮'][Math.floor(Math.random() * 8)],
       stars: newStars,

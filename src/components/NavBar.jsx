@@ -5,16 +5,6 @@
 
 import { Flame, Search, Sparkles, TrendingUp, Gamepad2, Heart } from 'lucide-react';
 
-interface NavBarProps {
-  searchQuery: string;
-  setSearchQuery: (query: string) => void;
-  favoritesCount: number;
-  showOnlyFavorites: boolean;
-  setShowOnlyFavorites: (onlyFavs: boolean) => void;
-  selectedCategory: string;
-  setSelectedCategory: (category: string) => void;
-}
-
 export default function NavBar({
   searchQuery,
   setSearchQuery,
@@ -23,7 +13,7 @@ export default function NavBar({
   setShowOnlyFavorites,
   selectedCategory,
   setSelectedCategory,
-}: NavBarProps) {
+}) {
   const categories = ['All', 'Action', 'Arcade', 'Puzzle', 'Retro', 'Sports'];
 
   return (
