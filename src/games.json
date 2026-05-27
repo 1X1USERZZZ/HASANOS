@@ -1,0 +1,176 @@
+[
+  {
+    "id": "pacman",
+    "title": "Google Pac-Man",
+    "description": "The timeless retro arcade classic. Gobble up yellow dots, avoid the colorful ghosts (Blinky, Pinky, Inky, and Clyde), and aim for the high score inside the classic Google interactive board!",
+    "iframeUrl": "https://macek.github.io/google_pacman/",
+    "category": "Retro",
+    "tags": ["Classic", "Retro", "Arcade", "High Score"],
+    "thumbnail": "gradient-yellow",
+    "instructions": [
+      "Use Arrow Keys to guide Pac-Man.",
+      "Eat Power Pellets (large dots) to turn ghosts blue and vulnerable.",
+      "Eat fruits that appear near the center for bonus points.",
+      "Avoid ghosts when they are in their normal state!"
+    ],
+    "plays": 14205,
+    "rating": 4.9,
+    "likes": 2420,
+    "releaseYear": 1980
+  },
+  {
+    "id": "2048",
+    "title": "2048 puzzle",
+    "description": "Combine falling and sliding numbered tiles on a grid to merge them into the legendary 2048 tile. A highly addictive mathematical slide puzzle requiring forward-thinking strategy.",
+    "iframeUrl": "https://gabrielecirulli.github.io/2048/",
+    "category": "Puzzle",
+    "tags": ["Math", "Strategy", "Puzzle", "Highly Addictive"],
+    "thumbnail": "gradient-gold",
+    "instructions": [
+      "Use Arrow keys or WASD to slide tiles in any direction.",
+      "When two tiles with the same number touch, they merge into one with double the value!",
+      "Plan your moves ahead to avoid filling the entire grid.",
+      "Build up to the 2048 tile to win, then keep going to chase your ultimate high score."
+    ],
+    "plays": 11840,
+    "rating": 4.8,
+    "likes": 1928,
+    "releaseYear": 2014
+  },
+  {
+    "id": "clumsy-bird",
+    "title": "Clumsy Bird",
+    "description": "Fly through hazardous custom brick obstacles as a cute, clumsy bird! A visually rich HTML5 clone of the iconic Flappy Bird game featuring pixel-perfect graphics and responsive control.",
+    "iframeUrl": "https://ellisonleao.github.io/clumsy-bird/",
+    "category": "Arcade",
+    "tags": ["Flappy", "Hard", "Arcade", "Flying"],
+    "thumbnail": "gradient-emerald",
+    "instructions": [
+      "Click the screen or press the Spacebar to flap your wings and fly upwards.",
+      "Let go to dive downwards.",
+      "Squeeze carefully through the gaps in the green brick towers.",
+      "Every gap successfully cleared awards 1 point. Go for a high score!"
+    ],
+    "plays": 9520,
+    "rating": 4.6,
+    "likes": 1210,
+    "releaseYear": 2013
+  },
+  {
+    "id": "hextris",
+    "title": "Hextris Puzzle",
+    "description": "An intense, fast-paced puzzle game inspired by Tetris. Rotate a hexagon and stack colored blocks arriving from all directions. Clear blocks by aligning three or more of the same color.",
+    "iframeUrl": "https://hextris.github.io/hextris/",
+    "category": "Puzzle",
+    "tags": ["Tetris", "Hexagon", "Puzzle", "Fast-Paced"],
+    "thumbnail": "gradient-pink",
+    "instructions": [
+      "Use Left and Right Arrow keys (or A and D) to rotate the center hexagon.",
+      "Match 3 or more blocks of the same color on adjacent outer faces to destroy them.",
+      "Earn huge combo multipliers by triggering multiple matches in a row.",
+      "Do not let the stacked blocks expand beyond the outer grey boundary ring!"
+    ],
+    "plays": 7450,
+    "rating": 4.7,
+    "likes": 1050,
+    "releaseYear": 2014
+  },
+  {
+    "id": "doodle-jump",
+    "title": "Doodle Jump",
+    "description": "Bounce automatically from platform to platform, shooting monsters and grabbing jetpacks to propel yourself higher and higher in an infinite vertical climbing adventure!",
+    "iframeUrl": "https://earth96.github.io/doodle-jump/",
+    "category": "Action",
+    "tags": ["Jump", "Infinite", "Platformer", "Action"],
+    "thumbnail": "gradient-cyan",
+    "instructions": [
+      "Use Left and Right Arrow Keys (or tilt controls) to steer. You wrap around screen edges!",
+      "Collect jetpacks, hats, and trampolines to get massive vertical boosts.",
+      "Avoid yellowing, breaking, or trick shifting platforms.",
+      "Tap Spacebar to fire projectiles up at aliens and monsters!"
+    ],
+    "plays": 12340,
+    "rating": 4.5,
+    "likes": 1845,
+    "releaseYear": 2009
+  },
+  {
+    "id": "asteroids",
+    "title": "Retro Asteroids",
+    "description": "Drive a vector triangular spacecraft through a field of floating space pebbles and enemy flying saucers. Clear the space sector by breaking down and shooting big asteroids into debris.",
+    "iframeUrl": "https://dmcinnes.github.io/HTML5-Asteroids/",
+    "category": "Retro",
+    "tags": ["Space", "Vector", "Classic", "Shooter"],
+    "thumbnail": "gradient-slate",
+    "instructions": [
+      "Use Left and Right Arrow keys to rotate your spaceship.",
+      "Press Up Arrow to apply forward thrust.",
+      "Press Spacebar to fire lasers.",
+      "Press Down Arrow to make a panic jump into Hyperspace (unsafe!).",
+      "Avoid colliding with floating rocky fragments and enemy saucer shots."
+    ],
+    "plays": 5830,
+    "rating": 4.4,
+    "likes": 840,
+    "releaseYear": 1979
+  },
+  {
+    "id": "breakout",
+    "title": "Brick Breakout",
+    "description": "An elegant, canvas-based arcade classic of block destruction. Bounce a steel ball off your paddle to shatter standard brick grid matrices without letting it hit the ground.",
+    "iframeUrl": "https://mdn.github.io/canvas-breakout-game/",
+    "category": "Arcade",
+    "tags": ["Classic", "Breakout", "Physics", "Canvas"],
+    "thumbnail": "gradient-orange",
+    "instructions": [
+      "Move the paddle with your Mouse or Left and Right Arrow keys.",
+      "Bounce the ball back up to destroy colored blocks.",
+      "Angle your collisions by striking the ball near the edges of the paddle.",
+      "Clear all bricks to advance. Lose all lives if the ball hits the floor!"
+    ],
+    "plays": 6540,
+    "rating": 4.3,
+    "likes": 720,
+    "releaseYear": 1976
+  },
+  {
+    "id": "native-snake",
+    "title": "Hasan's Retro Arcade Snake",
+    "description": "A responsive, arcade-perfect 8-bit snake game built natively. Navigate the neon grid to chew down apples, grow longer, unlock speed-boost achievements, and avoid crash collisions with walls or yourself!",
+    "iframeUrl": "NATIVE",
+    "category": "Retro",
+    "tags": ["Snake", "Classic", "High-FPS", "Native"],
+    "thumbnail": "gradient-violet",
+    "instructions": [
+      "Use Arrow Keys (or WASD / Swipe) to change the directions of the snake.",
+      "Don't run into the game grid borders or your own body!",
+      "Eat red apples to score points and grow longer.",
+      "Golden apples appear occasionally for high-bonus action and temporary slow-downs."
+    ],
+    "plays": 16500,
+    "rating": 4.95,
+    "likes": 3110,
+    "releaseYear": 2026,
+    "isNative": true
+  },
+  {
+    "id": "native-pong",
+    "title": "Hasan's Retro Physics Pong",
+    "description": "A high-fidelity retro paddle hockey game. Play against an intelligent computer AI with full bounce physics, variable speed deflects, retro sound wave fx, and a responsive arcade screen.",
+    "iframeUrl": "NATIVE",
+    "category": "Sports",
+    "tags": ["Pong", "Sports", "Physics", "Native"],
+    "thumbnail": "gradient-rose",
+    "instructions": [
+      "Move your paddle using the Mouse (move cursor up/down) or Arrow Keys.",
+      "Deflect the ball past the opponent's boundary line to score points.",
+      "Angle the bounce by moving the paddle while striking the ball.",
+      "The first player to score 7 points wins the match!"
+    ],
+    "plays": 8430,
+    "rating": 4.8,
+    "likes": 1140,
+    "releaseYear": 2026,
+    "isNative": true
+  }
+]

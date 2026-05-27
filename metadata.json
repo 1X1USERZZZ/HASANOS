@@ -1,0 +1,6 @@
+{
+  "name": "HASANOS UNBLOCKED GAMES",
+  "description": "A responsive, modern unblocked games website loaded from a JSON database. Features a dark arcade layout, search, categories, favorites, rating, custom full-screen theater mode, and a diverse collection of classic HTML5 embeddable games.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
