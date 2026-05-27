@@ -69,16 +69,6 @@ export default function NavBar({
         {/* Action Toggles for Desktop */}
         <div className="hidden md:flex items-center gap-3" id="header-actions">
           <button
-            onClick={() => setShowOnlyFavorites(false)}
-            className={`cursor-pointer px-4 py-2 font-mono text-xs font-bold uppercase tracking-wider rounded-xl border transition-all ${
-              !showOnlyFavorites
-                ? 'bg-indigo-600/20 border-indigo-500/30 text-indigo-300'
-                : 'bg-transparent border-transparent text-slate-400 hover:text-white'
-            }`}
-          >
-            All Archives
-          </button>
-          <button
             onClick={() => setShowOnlyFavorites(true)}
             className={`cursor-pointer flex items-center gap-2 px-4 py-2 font-mono text-xs font-bold uppercase tracking-wider rounded-xl border transition-all ${
               showOnlyFavorites
